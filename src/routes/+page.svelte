@@ -5,6 +5,8 @@
 	const prodServerWsUrl = 'wss://relay.ftcscoring.app';
 	const devServerWsUrl = 'ws://localhost:20240';
 
+	let storage = false;
+
 	let user = '';
 	let password = '';
 	let eventCode = '';
@@ -25,9 +27,38 @@
 	];
 
 	onMount(() => {
-		// user = localStorage.getItem('user') || '';
-		// password = localStorage.getItem('password') || '';
+		development = localStorage.getItem('development') == 'true';
+		storage = localStorage.getItem('storage') == 'true';
+		user = localStorage.getItem('user') || '';
+		password = localStorage.getItem('password') || '';
 	});
+
+	function updateUsername() {
+		if (storage) {
+			localStorage.setItem('user', user);
+		}
+	}
+
+	function updatePassword() {
+		if (storage) {
+			localStorage.setItem('password', password);
+		}
+	}
+
+	function devCheck() {
+		localStorage.setItem('development', development.toString());
+	}
+
+	function storageCheck() {
+		localStorage.setItem('storage', storage.toString());
+		if (storage) {
+			localStorage.setItem('user', user);
+			localStorage.setItem('password', password);
+		} else {
+			localStorage.removeItem('user');
+			localStorage.removeItem('password');
+		}
+	}
 
 	function connectServer() {
 		serverWs?.close();
@@ -48,6 +79,7 @@
 		};
 
 		serverWs.onmessage = (message) => {
+			console.log('Server connection status:', JSON.parse(message.data)['connected'] == true);
 			const newConnStatus = JSON.parse(message.data)['connected'] == true;
 
 			if (serverConnected && newConnStatus) return;
@@ -93,14 +125,24 @@
 		<div class="field-section">
 			<h3>Credentials</h3>
 
-			<input bind:value={user} placeholder="FTC API Username" type="text" name="User" id="user" />
+			<input
+				bind:value={user}
+				on:change={updateUsername}
+				placeholder="FTC API Username"
+				type="text"
+				name="User"
+				id="user"
+				autocomplete="username"
+			/>
 
 			<input
 				bind:value={password}
+				on:change={updatePassword}
 				placeholder="FTC API Password"
 				type="password"
 				name="Password"
 				id="password"
+				autocomplete="current-password"
 			/>
 		</div>
 
@@ -126,11 +168,26 @@
 
 		<div class="field-section">
 			<div class="checkbox">
-				<input bind:checked={development} type="checkbox" name="Dev" id="dev-toggle" />
+				<input
+					bind:checked={development}
+					on:change={devCheck}
+					type="checkbox"
+					name="Dev"
+					id="dev-toggle"
+				/>
 				<label for="dev-toggle">Development</label>
 			</div>
 
-			<!-- storage delete -->
+			<div class="checkbox">
+				<input
+					bind:checked={storage}
+					on:change={storageCheck}
+					type="checkbox"
+					name="Storage"
+					id="storage-toggle"
+				/>
+				<label for="storage-toggle">Store Credentials in LocalStorage</label>
+			</div>
 		</div>
 
 		<div class="field-section">
@@ -261,14 +318,15 @@
 		position: absolute;
 		left: 0;
 		top: 0;
-		width: 100vw;
-		height: 100vh;
+		width: calc(100vw - 2rem);
+		height: calc(100vh - 2rem);
+		margin: 1rem;
 		display: none;
 		justify-content: center;
 		gap: 0.5rem;
 		align-items: center;
 		flex-direction: column;
-		background-color: #000;
+		text-align: center;
 
 		* {
 			margin: 0;
@@ -284,12 +342,20 @@
 	}
 
 	@media (max-width: 448px) {
+		main {
+			display: none;
+		}
+
 		#viewport-too-small {
 			display: flex;
 		}
 	}
 
-	@media (max-height: 518px) {
+	@media (max-height: 560px) {
+		main {
+			display: none;
+		}
+
 		#viewport-too-small {
 			display: flex;
 		}

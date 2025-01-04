@@ -27,6 +27,16 @@ To create a production version of your app:
 
 ```bash
 bun run build
+cd electron
+npm i
 ```
 
-You can preview the production build with `bun run preview`.
+Make sure there's a `.env` file with required properties in `forge.config.js`. See [Electron Forge docs](https://www.electronforge.io/guides/code-signing/code-signing-macos#option-1-using-an-app-specific-password).
+
+```bash
+npm run make
+```
+
+> Note: Use `bun` for Svelte, and `npm` for Electron.
+
+Your files will be in `electron/out`.
