@@ -10,7 +10,7 @@
 	let user = '';
 	let password = '';
 	let eventCode = '';
-	let ftcliveWsHost = 'localhost';
+	let ftcliveWsHost = '';
 	let ftcliveWs: WebSocket;
 	let serverWs: WebSocket;
 
@@ -356,7 +356,7 @@
 		}
 	}
 
-	@media (max-width: 448px) {
+	@media (max-width: 447px) {
 		main {
 			display: none;
 		}
@@ -366,7 +366,7 @@
 		}
 	}
 
-	@media (max-height: 578px) {
+	@media (max-height: 576px) {
 		main {
 			display: none;
 		}

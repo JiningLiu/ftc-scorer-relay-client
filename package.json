@@ -1,6 +1,6 @@
 {
   "name": "relayer-client",
-  "version": "0.0.1",
+  "version": "1.0-beta1",
   "devDependencies": {
     "@eslint/compat": "^1.2.4",
     "@sveltejs/adapter-auto": "^3.3.1",

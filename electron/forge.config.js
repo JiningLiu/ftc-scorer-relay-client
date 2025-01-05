@@ -7,7 +7,8 @@ require('dotenv').config();
 module.exports = {
 	packagerConfig: {
 		asar: true,
-		icon: './icons/icon.icns',
+		executableName: 'Live Relay',
+		icon: './icons/icon',
 		osxSign: {},
 		osxNotarize: {
 			appleId: process.env.APPLE_ID,
@@ -21,6 +22,17 @@ module.exports = {
 			name: '@electron-forge/maker-zip',
 			platforms: ['darwin', 'linux', 'win32']
 		}
+		// maker always tries to find "relayer-client" even though executable is explicitly "Live Relay"... 
+		// {
+		// 	name: '@electron-forge/maker-deb',
+		// 	platforms: ['linux'],
+		// 	config: {
+		// 		options: {
+		// 			executableName: 'Live Relay',
+		// 			icon: './icons/icon.png'
+		// 		}
+		// 	}
+		// }
 	],
 	plugins: [
 		{
