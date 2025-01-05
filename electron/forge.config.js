@@ -7,6 +7,7 @@ require('dotenv').config();
 module.exports = {
 	packagerConfig: {
 		asar: true,
+		icon: './icons/icon.icns',
 		osxSign: {},
 		osxNotarize: {
 			appleId: process.env.APPLE_ID,
@@ -17,20 +18,8 @@ module.exports = {
 	rebuildConfig: {},
 	makers: [
 		{
-			name: '@electron-forge/maker-squirrel',
-			config: {}
-		},
-		{
 			name: '@electron-forge/maker-zip',
-			platforms: ['darwin']
-		},
-		{
-			name: '@electron-forge/maker-deb',
-			config: {}
-		},
-		{
-			name: '@electron-forge/maker-rpm',
-			config: {}
+			platforms: ['darwin', 'linux', 'win32']
 		}
 	],
 	plugins: [

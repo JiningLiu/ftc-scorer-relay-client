@@ -209,7 +209,11 @@
 
 			<button on:click={connectFtclive}>2 - Connect to FTCLive</button>
 		</div>
-		<p>Open console to see data.</p>
+
+		<div class="field-section">
+			<h6>Version 1.0-beta <b>(Prerelease)</b></h6>
+			<h6>© 2024-2025 FTC Team 20240 & Contributors</h6>
+		</div>
 	</div>
 </main>
 
@@ -270,7 +274,8 @@
 	}
 
 	h3,
-	p {
+	p,
+	h6 {
 		margin: 0;
 	}
 
@@ -314,6 +319,16 @@
 		background-color: #082;
 	}
 
+	h6 {
+		font-weight: 400;
+		color: #aaa;
+	}
+
+	h6 {
+		font-size: 0.8rem;
+		color: #aaa;
+	}
+
 	#viewport-too-small {
 		position: absolute;
 		left: 0;
@@ -351,7 +366,7 @@
 		}
 	}
 
-	@media (max-height: 560px) {
+	@media (max-height: 578px) {
 		main {
 			display: none;
 		}

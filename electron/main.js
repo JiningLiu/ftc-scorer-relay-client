@@ -1,12 +1,16 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 const { app, BrowserWindow } = require('electron');
 
+app.setName('Live Relay');
+
 const createWindow = () => {
 	const win = new BrowserWindow({
 		width: 468,
-		height: 608,
+		height: 626,
 		minWidth: 468,
-		minHeight: 608
+		minHeight: 626,
+		title: 'Live Relay',
+		icon: './icons/icon.png'
 	});
 
 	win.loadFile('index.html');
