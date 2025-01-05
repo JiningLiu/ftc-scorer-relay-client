@@ -62,13 +62,11 @@
 
 	function connectServer() {
 		serverWs?.close();
-		serverWs = new WebSocket(development ? devServerWsUrl : prodServerWsUrl, [user, password]);
+		serverWs = new WebSocket(`${development ? devServerWsUrl : prodServerWsUrl}?relayer=true&eventCode=${eventCode.toLowerCase()}`, [user, password]);
 
 		serverWs.onopen = () => {
 			serverWs.send(
 				JSON.stringify({
-					eventCode: eventCode.toLowerCase(),
-					clientType: 'relay',
 					connected: false
 				})
 			);
@@ -106,8 +104,6 @@
 				try {
 					serverWs?.send(
 						JSON.stringify({
-							eventCode: eventCode.toLowerCase(),
-							clientType: 'relay',
 							connected: true,
 							data: JSON.parse(message.data)
 						})
@@ -211,8 +207,8 @@
 		</div>
 
 		<div class="field-section">
-			<h6>Version 1.0-beta3 <b>(Prerelease)</b></h6>
-			<h6>© 2024-2025 FTC Team 20240 & Contributors</h6>
+			<h6>Version 1.0-rc1 <b>(Prerelease)</b></h6>
+			<h6>© 2024-2025 FTC Team 20240 & Contributors. <a target="_blank" href="https://github.com/JiningLiu/ftc-scorer-relay-client">GitHub</a> <a target="_blank" href="https://github.com/JiningLiu/ftc-scorer-relay-client/blob/main/LICENSE">MIT License</a></h6>
 		</div>
 	</div>
 </main>
@@ -327,6 +323,10 @@
 	h6 {
 		font-size: 0.8rem;
 		color: #aaa;
+	}
+
+	a {
+		color: #66d;
 	}
 
 	#viewport-too-small {

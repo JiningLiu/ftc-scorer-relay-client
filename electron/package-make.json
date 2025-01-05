@@ -1,6 +1,6 @@
 {
 	"name": "Live Relay",
-	"version": "1.0-beta3",
+	"version": "1.0-rc1",
 	"description": "Relayer Electron desktop client for FTC Live Score Relay",
 	"main": "main.js",
 	"productName": "Live Relay",
