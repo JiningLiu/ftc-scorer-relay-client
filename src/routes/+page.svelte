@@ -356,7 +356,7 @@
 		}
 	}
 
-	@media (max-width: 447px) {
+	@media (max-width: 448px) {
 		main {
 			display: none;
 		}
@@ -366,7 +366,7 @@
 		}
 	}
 
-	@media (max-height: 576px) {
+	@media (max-height: 577px) {
 		main {
 			display: none;
 		}
