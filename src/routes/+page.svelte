@@ -186,7 +186,7 @@
 					name="Storage"
 					id="storage-toggle"
 				/>
-				<label for="storage-toggle">Store Credentials in LocalStorage</label>
+				<label for="storage-toggle">Store Credentials in localStorage</label>
 			</div>
 		</div>
 
@@ -211,7 +211,7 @@
 		</div>
 
 		<div class="field-section">
-			<h6>Version 1.0-beta <b>(Prerelease)</b></h6>
+			<h6>Version 1.0-beta3 <b>(Prerelease)</b></h6>
 			<h6>© 2024-2025 FTC Team 20240 & Contributors</h6>
 		</div>
 	</div>

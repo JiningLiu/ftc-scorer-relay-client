@@ -20,19 +20,18 @@ module.exports = {
 	makers: [
 		{
 			name: '@electron-forge/maker-zip',
-			platforms: ['darwin', 'linux', 'win32']
+			platforms: ['darwin', 'win32']
+		},
+		{
+			name: '@electron-forge/maker-deb',
+			platforms: ['linux'],
+			config: {
+				options: {
+					executableName: 'Live Relay',
+					icon: './icons/icon.png'
+				}
+			}
 		}
-		// maker always tries to find "relayer-client" even though executable is explicitly "Live Relay"... 
-		// {
-		// 	name: '@electron-forge/maker-deb',
-		// 	platforms: ['linux'],
-		// 	config: {
-		// 		options: {
-		// 			executableName: 'Live Relay',
-		// 			icon: './icons/icon.png'
-		// 		}
-		// 	}
-		// }
 	],
 	plugins: [
 		{
